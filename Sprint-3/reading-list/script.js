@@ -21,3 +21,22 @@ const books = [
   },
 ];
 
+//render books function
+function renderBooks() {
+  books.forEach((book) => {
+    const bookList = document.getElementById("reading-list");
+    const listItem = document.createElement("li");
+    const bookInfo = document.createElement("p");
+    const bookImage = document.createElement("img");
+    bookInfo.textContent = book.title + " by " + book.author  ;
+    bookImage.src = book.bookCoverImage;
+    listItem.appendChild(bookInfo);
+    listItem.appendChild(bookImage);
+    book.alreadyRead ? (listItem.style.backgroundColor = "green")
+                     : (listItem.style.backgroundColor = "red");
+    bookList.appendChild(listItem);
+  });
+}
+
+//render the books on page load
+document.addEventListener("DOMContentLoaded", renderBooks);
